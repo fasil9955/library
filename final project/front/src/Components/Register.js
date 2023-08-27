@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
-import './style.css';
+import './register.css';
 
 const Register = () => {
 
@@ -78,12 +78,15 @@ const Register = () => {
   
 
   return (
-    <div className="container vh-100 d-flex justify-content-center align-items-center">
-      <div className="register-form p-4">
+    <body className="register-body">
+      <br></br>
+      
+      <div className="container vh-100 d-flex justify-content-center align-items-center ">
+      <div className="register-form p-4 register-box">
         <h2 className="mb-4">Register</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
-            <label htmlFor="username" className="form-label">Username:</label>
+            <label htmlFor="username" className="form-label">Username</label>
             <input
               type="text"
               className="form-control"
@@ -95,7 +98,7 @@ const Register = () => {
             />
           </div>
           <div className="mb-3">
-            <label htmlFor="email" className="form-label">Email:</label>
+            <label htmlFor="email" className="form-label">Email</label>
             <input
               type="email"
               className="form-control"
@@ -107,7 +110,7 @@ const Register = () => {
             />
           </div>
           <div className="mb-3">
-            <label htmlFor="password" className="form-label">Password:</label>
+            <label htmlFor="password" className="form-label">Password</label>
             <input
               type="password"
               className="form-control"
@@ -119,16 +122,17 @@ const Register = () => {
             />
           </div>
          <center>
-         <button type="submit" className="btn btn-primary">Register</button>
+         <button type="submit" className="btn register-button btn-primary">Register</button>
          <br></br>
           <span>
-          Already have an account? <Link to={"/login"}>Login</Link>
+          Already have an account? <a href="/login" className="register-link">Login</a>
         </span>
         </center>
         </form>
        <ToastContainer/>
       </div>
     </div>
+    </body>
   );
 }
  

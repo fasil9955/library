@@ -135,7 +135,7 @@ function UpdateBook() {
             <hr></hr>
             <div class="formbold-input-flex">
                     <label class="formbold-form-label">
-                     Change image
+                    image
                     </label>
                     <input
                       type="file"
@@ -188,7 +188,7 @@ function UpdateBook() {
                 <div>
                     <input
                     class="formbold-form-input"
-                    type="date" 
+                    type="text" 
                     name="year"
                     value={book.year}
                     onChange={handleInputChange}
@@ -196,13 +196,16 @@ function UpdateBook() {
                     <label class="formbold-form-label"> Publication Date </label>
                 </div>
               </div>
+              <div class="formbold-bottom">
+              <button   class="formbold-btn" type="button" ><a class="formbold-anchor "  href="/view">Cancel</a></button>
               <button 
               class="formbold-btn"
               type="submit" >
                   Submit
               </button>
               
-              <a href="/view"  class="formbold-btn" type="button" >Cancel</a>
+              
+              </div>
           </form>
         </div>
       </div>
