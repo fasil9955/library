@@ -15,6 +15,13 @@ const addbookSchema = new mongoose.Schema({
       type: String,
       required: [true, "genre required"],
     },
+    year: {
+      type: Number,
+      required: [true, "year required"],
+    },
+    image: {
+      type: String, // Store the base64 encoded image as a string
+    },
    
   });
 

@@ -26,9 +26,7 @@ const Layout = () => {
         <li class="nav-item">
           <a class="nav-link active" href="/Service">Service</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="/view">display</a>
-        </li>
+        
         <li class="nav-item">
           <a class="nav-link active" href="#">About</a>
         </li>
@@ -36,9 +34,7 @@ const Layout = () => {
         
        
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"></input>
-        <button class="btn btn-outline-success" type="submit">Search</button>
+      <form class="d-flex" >
         <button class="btn btn-outline-success">Logout</button>
       </form>
     </div>

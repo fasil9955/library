@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "./login.css"
-import pictures from "../images/addbook.jpg"
+import pictures from "../images/lib_books.jpg"
 
 const Login = () => {
   const navigate = useNavigate();
@@ -91,7 +91,7 @@ const Login = () => {
         
         </div>
           <span  class="anchor">
-             Already have an account? <Link to={"/signup"}>Signup</Link>
+             Dont have an account? <Link to={"/register"}>Signup</Link>
             </span>
           <button type="submit" class="logIn">Log In</button>
           

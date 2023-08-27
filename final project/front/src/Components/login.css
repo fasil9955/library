@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
-
+/* import url('library\final project\front\src\images\Lib_background.jpg'); */
 
 .body {
 	background: #f3e0e2;
@@ -10,7 +10,7 @@
 	font-family: 'Montserrat', sans-serif;
 	height: 100vh;
 	margin: -20px 0 50px;
-	/* background-image: url(images\Lib_background.jpg) ;  */
+	background-image: url("D:\skill lab 2\project\library\final project\front\src\images\Lib_background.jpg");
 	background-size:contain;
 }
 

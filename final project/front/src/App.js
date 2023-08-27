@@ -17,14 +17,14 @@ const App=()=>{
     <BrowserRouter>
       <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
+            
             <Route path="*" element={<NoPage />} />
             <Route path="service" element={<Service />} />
             <Route path="view" element={<View />} />
           </Route>
           <Route path="login" element={<Login />} />
-            <Route path="Register" element={<Register />} />
-           
+            <Route path="register" element={<Register />} />
+            <Route index element={<Home />} />
             <Route path="/update/:id" element={<UpdateBook />} />
             
           

@@ -1,31 +1,27 @@
 import "./service.css"
 import axios from "axios";
+import updateBook from "../images/update_book.png";
+import addBook from "../images/add_book.png"
 import { ToastContainer, toast } from "react-toastify";
-import React, { useEffect,useState } from 'react';
+import React, {useState } from 'react';
+import "./addBook.css"
+
+
+
+
 const Service = () => {
 
-  const [fbooks, setBooks] = useState([]);
 
-  useEffect(() => {
-    // Fetch data from the server
-    axios.get('http://localhost:4000/books')
-      .then(response => {
-        setBooks(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
-  }, []);
-
-    
 
   const [inputValue, setInputValue] = useState({
     title: "",
     author: "",
     genre: "",
+    year:"",
+    image: "",
   });
 
-  const { title  , author , genre} = inputValue;
+  const { title  , author , genre, year ,image} = inputValue;
 
   const handleOnChange = (e) => {
     const {id, value } = e.target;
@@ -35,36 +31,42 @@ const Service = () => {
     });
   };
 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setInputValue({
+          ...inputValue,
+          image: reader.result, // Store the base64 encoded image
+        });
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
-  const handleError = (err) =>{
-    toast.error(err, {
-      position: "bottom-left",
-    });
-  };
-  const handleSuccess = (msg) =>{
-    toast.success(msg, {
-      position: "bottom-right",
-    });
-  };
+
+ 
 
   
     const handleSubmit = async (e) => {
       e.preventDefault();
+      
       try {
         const { data } = await axios.post(
           "http://localhost:4000/addbook",
           {
             ...inputValue,
           },
-          { withCredentials: true }
+          { withCredentials: true   }
         );
         const { success, message } = data;
         if (success) {
-          handleSuccess(message);
+          alert("Book Added Successfully !!!")
          
         } else {
           
-          handleError(message);
+          alert(message)
         }
       } catch (error) {
         console.log(error);
@@ -74,6 +76,8 @@ const Service = () => {
         title: "",
         author: "",
         genre: "",
+        year:"",
+        image: "",
         
       });
     };
@@ -82,8 +86,57 @@ const Service = () => {
         <>
         <body>
             
-        <h5 class="card-title">Add Book</h5>
-       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"> Add</button>
+    
+       <br></br>
+    <div class="container-fluid">
+        <div class="row">
+        <div class=" col-sm-12 col-md-4 col-lg-2">
+                {/* <div class="card">
+                    <img src={addBook} width="auto" height="250px"></img>                
+                    <div class="card-body">
+                        <h5 class="card-title">Add Book</h5>
+                        <a href="#" class="btn btn-primary">Add</a>
+                    </div>
+                </div> */}
+            </div>
+            <div class=" col-sm-12 col-md-4 col-lg-3">
+                <div class="card">
+                    <img src={addBook} width="auto" height="250px"></img>                
+                    <div class="card-body">
+                        <h5 class="card-title">Add Book</h5>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"> Add</button>
+                    </div>
+                </div>
+            </div>
+            <div class=" col-sm-12 col-md-4 col-lg-2">
+                {/* <div class="card">
+                    <img src={borrowBook} width="auto" height="250px"></img>
+                    <div class="card-body">
+                        <h5 class="card-title">Borrow Book</h5>
+                        <a href="#" class="btn btn-primary">Borrow</a>
+                    </div>
+                </div> */}
+            </div>
+            <div class=" col-sm-12 col-md-4 col-lg-3">
+                <div class="card">
+                    <img src={updateBook} width="auto" height="250px"></img>
+                    <div class="card-body">
+                        <h5 class="card-title">View Book</h5>
+                        <a href="/view" class="btn btn-primary">View</a>
+                    </div>
+                </div>
+            </div>
+            <div class=" col-sm-12 col-md-4 col-lg-2">
+                {/* <div class="card">
+                    <img src={deleteBook} width="auto" height="250px"></img>
+                    <div class="card-body">
+                        <h5 class="card-title">Delete Book</h5>
+                        <a href="#" class="btn btn-primary">Delete</a>
+                    </div>
+                </div> */}
+            </div>
+        </div>
+    </div>
       
     
 
@@ -98,8 +151,116 @@ const Service = () => {
       </div>
       <div class="modal-body">
         <div>
+
+
+        <form  onSubmit={handleSubmit}>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">
+                      Book Name
+                    </label>
+                    <input
+                       type="text"
+                       className="form-control"
+                       id="title"
+                       placeholder="Enter book title"
+                       value={title}
+                       onChange={handleOnChange}
+                       required
+                      aria-describedby="emailHelp"
+                    ></input>
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">
+                      Author Name
+                    </label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="author"
+                        placeholder="Enter author name"
+                        value={author}
+                        onChange={handleOnChange}
+                        required
+                    ></input>
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">
+                      Gener
+                    </label>
+                    <input
+                       type="text"
+                       className="form-control"
+                       id="genre"
+                       placeholder="Enter book genre"
+                       value={genre}
+                       onChange={handleOnChange}
+                       required
+                    ></input>
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">
+                      Year of Publication
+                    </label>
+                    <input
+                     type="number"
+                     className="form-control"
+                     id="year"
+                     placeholder="Enter the year"
+                     value={year}
+                     onChange={handleOnChange}
+                     required
+                    ></input>
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">
+                      Facing sheet image
+                    </label>
+                    <input
+                      type="file"
+                      class="form-control"
+                      id="image"
+                      placeholder='.jpeg file'
+                      onChange={handleImageChange}
+                      
+                      accept="image/*"
+                    ></input>
+                  </div>
+
+                
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Add Book</button>
+                </div>
+
+                </form>
     
-      <form onSubmit={handleSubmit}>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {/* <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="title" className="form-label">Title:</label>
           <input
@@ -140,7 +301,7 @@ const Service = () => {
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Add Book</button>
         </div>
-      </form>
+      </form> */}
    </div> 
       </div>
       
@@ -149,35 +310,6 @@ const Service = () => {
 </div>
    
 
- {/* display */}
-
- <div>
-  <h3>available books</h3>
-  <div>
-        {fbooks.map((books) => {
-          return (
-            <div
-              style={{
-                backgroundColor: "aqua",
-                width: "25%",
-                float: "left",
-                margin: "10px",
-              }}
-              key={books._id}
-            >
-              {books.title}
-              <br></br>
-              {books.author}
-              <br></br>
-              {books.genre}
-              <br></br>
-             
-            </div>
-          );
-        })}
-      </div>
-
- </div>
 
 
 

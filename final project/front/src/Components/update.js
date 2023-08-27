@@ -4,7 +4,7 @@ import image from "../images/update.jpeg";
 import { useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
-
+import "./UpdateForm.css"
 
 function UpdateBook() {
   const { id } = useParams();
@@ -13,6 +13,8 @@ function UpdateBook() {
     title: "",
     author: "",
     genre: "",
+    year:"",
+    image:"",
   });
 
   useEffect(() => {
@@ -29,14 +31,27 @@ function UpdateBook() {
     }));
   };
 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setBook({
+          ...book,
+          image: reader.result, // Store the base64 encoded image
+        });
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+
   const handleUpdate = (e) => {
     e.preventDefault();
     Axios.put(`http://localhost:4000/book/${id}`, book)
       .then((res) => {
         console.log("Book updated:", res.data);
-        toast.success(res, {
-          position: "bottom-left",
-        });
+        alert("Updated")
         setTimeout(() => {
           navigate("/view");
         }, 1000);
@@ -53,7 +68,7 @@ function UpdateBook() {
   return (
 <>
 
-<div className="d-flex justify-content-center align-items-center vh-100">
+{/* <div className="d-flex justify-content-center align-items-center vh-100">
   <div className="card shadow" style={{ width: "35rem" }}>
     <img src={image} className="card-img-top" alt="Card" />
     <div className="card-body">
@@ -106,8 +121,91 @@ function UpdateBook() {
       <ToastContainer />
     </div>
   </div>
-</div>
+</div> */}
 
+
+<div class="formbold-main-wrapper">
+        <div class="formbold-form-wrapper">
+        
+          <form   onSubmit={handleUpdate} >
+            <h1 class="heading">Update</h1>
+            <br class="break"></br>
+            <img src={book.image} className="card-img-top" alt="Card" />
+            <br></br>
+            <hr></hr>
+            <div class="formbold-input-flex">
+                    <label class="formbold-form-label">
+                     Change image
+                    </label>
+                    <input
+                      type="file"
+                      class="formbold-form-input"
+                      id="image"
+                      placeholder='.jpeg file'
+                      onChange={handleImageChange}
+                      accept="image/*"
+                    ></input>
+                  </div>
+              <div class="formbold-input-flex">
+                <div>
+                    <input
+                     type="text"
+                     name="title"
+                     value={book.title}
+                     onChange={handleInputChange}
+                    
+                  
+                    class="formbold-form-input"
+                     />
+                    <label  class="formbold-form-label">Title</label>
+                </div>
+                <div>
+                    <input
+                    class="formbold-form-input"
+                    type="text"
+                    name="author"
+                    value={book.author}
+                    onChange={handleInputChange}
+                    
+                   
+                    />
+                    <label  class="formbold-form-label">Author</label>
+                </div>
+              </div>
+              <div class="formbold-input-flex">
+                <div>
+                    <input
+                    class="formbold-form-input"
+                    type="text"
+                    name="genre"
+                    value={book.genre}
+                    onChange={handleInputChange}
+                    
+                    
+                    />
+                    <label class="formbold-form-label"> Genre </label>
+                </div>
+                <div>
+                    <input
+                    class="formbold-form-input"
+                    type="date" 
+                    name="year"
+                    value={book.year}
+                    onChange={handleInputChange}
+                   />
+                    <label class="formbold-form-label"> Publication Date </label>
+                </div>
+              </div>
+              <button 
+              class="formbold-btn"
+              type="submit" >
+                  Submit
+              </button>
+              
+              <a href="/view"  class="formbold-btn" type="button" >Cancel</a>
+          </form>
+        </div>
+      </div>
 
 
 
