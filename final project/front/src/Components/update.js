@@ -72,9 +72,12 @@ function UpdateBook() {
         <div class="formbold-form-wrapper">
         
           <form   onSubmit={handleUpdate} >
-            <h1 class="heading">Update</h1>
-            <br class="break"></br>
-            <img src={book.image} className="card-img-top" alt="Card" />
+            
+            <br></br>
+            <center><h1 class="heading">Update</h1></center>
+            
+            <img src={book.image} className="card-img-top" alt="Card" height="200" width="300" />
+
             <br></br>
             <hr></hr>
             <div class="formbold-input-flex">
