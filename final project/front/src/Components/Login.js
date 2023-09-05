@@ -101,7 +101,7 @@ const Login = () => {
       <div class="overlay-container">
         <div class="overlay">
           <div class="overlay-panel overlay-right">
-            <img src={pictures} alt="image not available"></img>
+            <img src={pictures} alt=" not available"></img>
           </div>
         </div>
       </div>

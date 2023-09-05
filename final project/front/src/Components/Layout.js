@@ -1,6 +1,6 @@
 
 
-import { Outlet, Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 
 
@@ -12,7 +12,7 @@ const Layout = () => {
     <>
       <nav class="navbar navbar-expand-lg bg-warning">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Library</a>
+    <h2 class="navbar-brand" >Library</h2>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -28,15 +28,13 @@ const Layout = () => {
         </li>
         
         <li class="nav-item">
-          <a class="nav-link active" href="#">About</a>
+          <a class="nav-link active" href="/about">About</a>
         </li>
         
         
        
       </ul>
-      <form class="d-flex" >
-        <button class="btn btn-outline-success">Logout</button>
-      </form>
+    
     </div>
     <br></br>
   </div>

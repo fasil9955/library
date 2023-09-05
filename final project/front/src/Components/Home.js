@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import photo1 from "../images/carousal-1.jpg"
+import photo2 from "../images/carousal-2.jpg"
+import photo3 from "../images/carousal-3.jpg"
+import Axios from "axios";
 const Home = () => {
 
+  const [fdata, setFData] = useState([]);
   const navigate = useNavigate();
   const [cookies, removeCookie] = useCookies([]);
   const [username, setUsername] = useState("");
@@ -40,6 +45,14 @@ const Home = () => {
     navigate("/login");
   };
 
+
+  useEffect(() => {
+    Axios.get("http://localhost:4000/book").then((res) => {
+      setFData(res.data);
+    });
+  }, []);
+
+
   return ( 
       <> 
       <body>
@@ -47,7 +60,7 @@ const Home = () => {
         {/* navbar */}
         <nav class="navbar navbar-expand-lg bg-warning">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Library</a>
+    <h2 class="navbar-brand" >Library</h2>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -61,12 +74,9 @@ const Home = () => {
         </li>
       
         <li class="nav-item">
-          <a class="nav-link active" href="#">About</a>
+          <a class="nav-link active" href="/about">About</a>
         </li>
-        
-        
-       
-      </ul>
+        </ul>
       <form class="d-flex" >
         <button class="btn btn-outline-success" onClick={Logout}>Logout</button>
       </form>
@@ -75,6 +85,7 @@ const Home = () => {
   </div>
 </nav>
 
+<br></br>
 
 
 
@@ -84,29 +95,64 @@ const Home = () => {
 
 
 
-     <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="https://source.unsplash.com/random/1920x700/?education" height="600" class="d-block w-100" alt="..."></img>
-            </div>
-            <div class="carousel-item">
-              <img src="https://source.unsplash.com/random/1920x700/?library" height="600" class="d-block w-100" alt="..."></img>
-            </div>
-            <div class="carousel-item">
-              <img src="https://source.unsplash.com/random/1920x700/?books" height="600" class="d-block w-100" alt="..."></img>
-            </div>
+
+<div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              src={photo1}
+              class="d-block w-100"
+              alt="..."
+              style={{width:"200px",height:"550px",objectFit:"cover"}}
+            ></img>
+          </div>
+          <div class="carousel-item">
+            <img
+              src={photo2}
+              class="d-block w-100"
+              alt="..."
+              style={{width:"200px",height:"550px",objectFit:"cover"}}
+            ></img>
+          </div>
+          <div class="carousel-item">
+            <img
+              src={photo3}
+              class="d-block w-100"
+              alt="..."
+              style={{width:"200px",height:"550px",objectFit:"cover"}}
+            ></img>
           </div>
         </div>
-
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExample"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExample"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
     <br></br>
-
-    <div class="container">
+<center><h1 style={{position:"center",fontFamily:"sans-serif"}}>New Arrivals!!</h1></center>
+<br></br>
+<br></br>
+    {/* <div class="container">
      
 
 
 
       <div class="row">
-          <div class=" col-md-6 col-lg-6 col-sm-12">
+          <div class=" col-md-3 col-lg-3 col-sm-12">
               <div class="card" >
                   <img src="https://source.unsplash.com/random/1920x1080/?wallpaper,englishbook" class="card-img-top" alt="..."></img>
                   <div class="card-body">
@@ -116,7 +162,7 @@ const Home = () => {
                   </div>
                 </div>
           </div>
-          <div class=" col-md-6 col-lg-6 col-sm-12">
+          <div class=" col-md-3 col-lg-3 col-sm-12">
               <div class="card" >
                   <img src="https://source.unsplash.com/random/1920x1080/?wallpaper,study" class="card-img-top" alt="..."></img>
                   <div class="card-body">
@@ -126,7 +172,7 @@ const Home = () => {
                   </div>
                 </div>
           </div>
-          <div class=" col-md-6 col-lg-6 col-sm-12">
+          <div class=" col-md-3 col-lg-3 col-sm-12">
               <div class="card" >
                   <img src="https://source.unsplash.com/random/1920x1080/?wallpaper,code" class="card-img-top" alt="..."></img>
                   <div class="card-body">
@@ -136,7 +182,7 @@ const Home = () => {
                   </div>
                 </div>
           </div>
-          <div class=" col-md-6 col-lg-6 col-sm-12">
+          <div class=" col-md-3 col-lg-3 col-sm-12">
               <div class="card" >
                   <img src="https://source.unsplash.com/random/1920x1080/?wallpaper,code" class="card-img-top" alt="..."></img>
                   <div class="card-body">
@@ -148,7 +194,39 @@ const Home = () => {
           </div>
       </div>
       
+    </div> */}
+
+<div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+  {fdata.slice(-4).map((book) => (
+    <div className="col-md-3 col-lg-3 col-sm-6 mb-4" key={book._id}>
+      <div className="card shadow-sm">
+        <img
+          src={book.image}
+          className="card-img-top"
+          alt="Book Cover"
+          style={{ height: "300px", objectFit: "cover" }}
+        />
+        <div className="card-body">
+          <h5 className="card-title">{book.title}</h5>
+          <p className="card-text">
+            <strong>Author:</strong> {book.author}
+          </p>
+          <p className="card-text">
+            <strong>Genre:</strong> {book.genre}
+          </p>
+          <p className="card-text">
+            <strong>Year:</strong> {book.year}
+          </p>
+          <div className="d-flex justify-content-center align-items-center mt-3">
+          <a href={`/view`} className="btn btn-primary me-2">
+              View
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
+  ))}
+</div>
    
 
     

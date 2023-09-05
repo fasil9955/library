@@ -2,7 +2,7 @@ import "./service.css"
 import axios from "axios";
 import updateBook from "../images/update_book.png";
 import addBook from "../images/add_book.png"
-import { ToastContainer, toast } from "react-toastify";
+
 import React, {useState } from 'react';
 import "./addBook.css"
 
@@ -21,7 +21,7 @@ const Service = () => {
     image: "",
   });
 
-  const { title  , author , genre, year ,image} = inputValue;
+  const { title  , author , genre, year } = inputValue;
 
   const handleOnChange = (e) => {
     const {id, value } = e.target;
@@ -101,7 +101,7 @@ const Service = () => {
             </div>
             <div class=" col-sm-12 col-md-4 col-lg-3">
                 <div class="card">
-                    <img src={addBook} width="auto" height="250px"></img>                
+                    <img src={addBook} width="auto" height="250px" alt="not found"></img>                
                     <div class="card-body">
                         <h5 class="card-title">Add Book</h5>
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"> Add</button>
@@ -119,7 +119,7 @@ const Service = () => {
             </div>
             <div class=" col-sm-12 col-md-4 col-lg-3">
                 <div class="card">
-                    <img src={updateBook} width="auto" height="250px"></img>
+                    <img src={updateBook} width="auto" height="250px" alt="not found"></img>
                     <div class="card-body">
                         <h5 class="card-title">View Book</h5>
                         <a href="/view" class="btn btn-primary">View</a>
@@ -127,13 +127,7 @@ const Service = () => {
                 </div>
             </div>
             <div class=" col-sm-12 col-md-4 col-lg-2">
-                {/* <div class="card">
-                    <img src={deleteBook} width="auto" height="250px"></img>
-                    <div class="card-body">
-                        <h5 class="card-title">Delete Book</h5>
-                        <a href="#" class="btn btn-primary">Delete</a>
-                    </div>
-                </div> */}
+               
             </div>
         </div>
     </div>
@@ -234,74 +228,6 @@ const Service = () => {
 
                 </form>
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      {/* <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label htmlFor="title" className="form-label">Title:</label>
-          <input
-            type="text"
-            className="form-control"
-            id="title"
-            placeholder="Enter book title"
-            value={title}
-            onChange={handleOnChange}
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="author" className="form-label">Author:</label>
-          <input
-            type="text"
-            className="form-control"
-            id="author"
-            placeholder="Enter author name"
-            value={author}
-            onChange={handleOnChange}
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="genre" className="form-label">Genre:</label>
-          <input
-            type="text"
-            className="form-control"
-            id="genre"
-            placeholder="Enter book genre"
-            value={genre}
-            onChange={handleOnChange}
-            required
-          />
-        </div>
-        <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Add Book</button>
-        </div>
-      </form> */}
    </div> 
       </div>
       
@@ -328,7 +254,7 @@ const Service = () => {
       </div>
     </footer>
  </div>
-      <ToastContainer/>
+      
 </body>
         </>
      );
