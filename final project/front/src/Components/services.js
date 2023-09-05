@@ -90,16 +90,10 @@ const Service = () => {
        <br></br>
     <div class="container-fluid">
         <div class="row">
-        <div class=" col-sm-12 col-md-4 col-lg-2">
-                {/* <div class="card">
-                    <img src={addBook} width="auto" height="250px"></img>                
-                    <div class="card-body">
-                        <h5 class="card-title">Add Book</h5>
-                        <a href="#" class="btn btn-primary">Add</a>
-                    </div>
-                </div> */}
+        <div class=" col-sm-12 col-md-6 col-lg-2">
+              
             </div>
-            <div class=" col-sm-12 col-md-4 col-lg-3">
+            <div class=" col-sm-12 col-md-6 col-lg-3">
                 <div class="card">
                     <img src={addBook} width="auto" height="250px" alt="not found"></img>                
                     <div class="card-body">
@@ -108,16 +102,10 @@ const Service = () => {
                     </div>
                 </div>
             </div>
-            <div class=" col-sm-12 col-md-4 col-lg-2">
-                {/* <div class="card">
-                    <img src={borrowBook} width="auto" height="250px"></img>
-                    <div class="card-body">
-                        <h5 class="card-title">Borrow Book</h5>
-                        <a href="#" class="btn btn-primary">Borrow</a>
-                    </div>
-                </div> */}
+            <div class=" col-sm-12 col-md-6 col-lg-2">
+               
             </div>
-            <div class=" col-sm-12 col-md-4 col-lg-3">
+            <div class=" col-sm-12 col-md-6 col-lg-3">
                 <div class="card">
                     <img src={updateBook} width="auto" height="250px" alt="not found"></img>
                     <div class="card-body">
@@ -126,7 +114,7 @@ const Service = () => {
                     </div>
                 </div>
             </div>
-            <div class=" col-sm-12 col-md-4 col-lg-2">
+            <div class=" col-sm-12 col-md-6 col-lg-2">
                
             </div>
         </div>
@@ -179,7 +167,7 @@ const Service = () => {
                   </div>
                   <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">
-                      Gener
+                      Genre
                     </label>
                     <input
                        type="text"
@@ -237,6 +225,9 @@ const Service = () => {
    
 
 
+<br></br>
+<br></br>
+<br></br>
 
 
 

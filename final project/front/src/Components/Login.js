@@ -12,6 +12,8 @@ const Login = () => {
     password: "",
   });
   const { email, password } = inputValue;
+  
+  
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     setInputValue({
@@ -19,6 +21,8 @@ const Login = () => {
       [name]: value,
     });
   };
+
+  
 
   const handleError = (err) =>
     toast.error(err, {

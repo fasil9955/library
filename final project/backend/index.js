@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const dotenv=require('dotenv');
 const cors =require('cors');
 const cookieParser = require("cookie-parser");
-const route = require("./routes/routes");
+const route = require("./routes/routes.js");
 
 const { URI, PORT } = process.env;
 
