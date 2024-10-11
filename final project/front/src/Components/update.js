@@ -25,8 +25,8 @@ function UpdateBook() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setBook((prevBook) => ({
-      ...prevBook,
+    setBook((book) => ({
+      ...book,
       [name]: value,
     }));
   };

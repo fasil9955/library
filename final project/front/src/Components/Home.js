@@ -34,7 +34,7 @@ const Home = () => {
         ? toast(`Hello ${user}`, {
             position: "top-right",
           })
-        : (removeCookie("token"), navigate("/login"));
+        : (removeCookie("token"));
     };
     verifyCookie();
   }, [cookies, navigate, removeCookie]);
